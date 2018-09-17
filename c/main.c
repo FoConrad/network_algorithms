@@ -25,5 +25,18 @@ int main(int argc, char* argv[]) {
             size, time_taken);
 
     heap->print_heap(heap);
+    printf("Removing min: %d\n", heap->pop_min(heap));
+    heap->print_heap(heap);
+    printf("Removing min: %d\n", heap->pop_min(heap));
+    heap->print_heap(heap);
+
+    int randInts[12] = {40, 90, 34, 22, 99, 22, 39, 43, 50, 3, 7, 109};
+    printf("Array to make heap: [");
+    for (int i = 0; i < 11; i++)
+        printf("%d, ", randInts[i]);
+    printf("%d]\n", randInts[11]);
+
+    heap_t* sec_heap = make_heap_list(3, 12, randInts);
+    sec_heap->print_heap(sec_heap);
     return 0;
 }
