@@ -3,11 +3,15 @@
 #include <time.h>
 #include "heap.h"
 
-// Args: n_elements_to_add
-int main(int argc, char* argv[]) {
+// chose from HEAP_MAIN, RED_BLACK
+#define RED_BLACK 1
+
+
+#ifdef HEAP_MAIN
+void heap_main(int argc, char* argv[]) {
     if (argc != 3) {
         printf("usage: ./a.out <d-children_size> <items-to-add>\n");
-        return -1;
+        return;
     }
 
     unsigned int d = strtoul(argv[1], NULL, 10);
@@ -38,5 +42,19 @@ int main(int argc, char* argv[]) {
 
     heap_t* sec_heap = make_heap_list(3, 12, randInts);
     sec_heap->print_heap(sec_heap);
+}
+#elif RED_BLACK
+void red_black(int argc, char* argv[]) {
+    printf("Red black not implemented\n");
+}
+#endif // ifdef HEAP_MAIN 
+
+// Args: n_elements_to_add
+int main(int argc, char* argv[]) {
+#ifdef HEAP_MAIN
+    heap_main(argc, argv);
+#elif RED_BLACK
+    red_black(argc, argv);
+#endif
     return 0;
 }
